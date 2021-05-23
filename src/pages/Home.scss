@@ -1,0 +1,78 @@
+@import '../definitions/variables';
+
+  html, body {
+    width: 100%;
+    margin: 0;
+    background-color: $white;
+    font-family: 'Lato', sans-serif;
+    font-size: map-get($font-sizes, "min");
+    font-weight: 400;
+  }
+  
+  body {
+    position: relative;
+  }
+  
+  a, a:visited {
+    color: $white;
+  }
+  
+  button {
+    font-family: 'Lato', sans-serif;
+  }
+  
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  
+  hr[role="separator"] {
+    border: 0 none;
+    border-bottom: 2px dotted $dark-gray;
+    margin: 1.5rem 1rem;
+  }
+  
+  .max-centered {
+    display: contents;
+  }
+  
+  
+  @media all and (min-width: 768px) {
+    html, body {
+        font-size: map-get($font-sizes, "normal");
+    }
+  }
+  
+  @media all and (min-width: 1100px) {
+    html, body {
+        font-size: 18px;
+    }
+  
+    .max-centered {
+        position: relative;
+        display: block;
+        width: 100vw;
+        max-width: 1100px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+  
+    .max-centered > *,
+    .max-centered > hr[role="separator"] {
+        margin-right: 0;
+        margin-left: 0;
+    }
+  
+    .max-centered main {
+        padding: 0;
+    }
+  
+    main h2 {
+        font-size: 2.5rem;
+    }
+  
+    hr[role="separator"] {
+        margin: 2rem 0;
+    }
+  }

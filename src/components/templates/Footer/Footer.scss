@@ -1,0 +1,75 @@
+@import "../../../definitions/variables";
+
+.footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin: 0 1rem 3rem;
+
+  &__links {
+    li {
+      padding: 0.5rem 0;
+      font-size: map-get($font-sizes, "subtitle");
+      a {
+        color: $dark-gray;
+        text-decoration: none;
+
+        &:hover {
+          color: $darker-gray;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  &__social {
+    span {
+      color: $darker-gray;
+      font-size: map-get($font-sizes, "subtitle");
+      text-align: right;
+    }
+
+    ul {
+      display: flex;
+      margin-top: 1rem;
+
+      li {
+        margin-right: 1rem;
+      }
+    }
+  }
+}
+
+
+@media all and (min-width: 768px) {
+  .footer {
+    align-items: flex-start;
+
+    &__links {
+      ul {
+        display: flex;
+
+        li {
+          padding: 0;
+          margin-right: 2rem;
+          font-size: map-get($font-sizes, "normal");
+        }
+      }
+    }
+
+    &__social {
+      display: flex;
+      align-items: center;
+
+      span {
+        margin-right: 1rem;
+        color: $dark-gray;
+        font-size: map-get($font-sizes, "normal");
+      }
+
+      ul {
+        margin-top: 3px;
+      }
+    }
+  }
+}

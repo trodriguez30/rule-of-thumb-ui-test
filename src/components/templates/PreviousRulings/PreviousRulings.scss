@@ -1,0 +1,32 @@
+@import '../../../definitions/variables';
+
+main[role="main"] {
+  padding: 0 1rem;
+  margin-top: 2rem;
+}
+
+.main-top{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .main-top__title{
+    color: $dark-gray;
+    font-weight: 300;
+    margin: 0 0 2rem;
+    font-size: map-get($font-sizes, "superbig");
+  }
+}
+
+@media all and (min-width: 1100px) {
+  main h2 {
+    font-size: map-get($font-sizes, "extra");
+  }
+}
+
+
+@media all and (min-width: 1100px) {
+  main h2 {
+    font-size: map-get($font-sizes, "extra");
+  }
+}

@@ -1,0 +1,45 @@
+.grid-container {
+  display: flex;
+  align-items: flex-end;
+  width: 25vw;
+  height: 25vw;
+
+  &-opacity {
+    background-color: var(--color-gray-background);
+  }
+
+  .grid-content {
+    width: 100%;
+    height: 15vw;
+
+    &__top {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      &-thumb-icon {
+        height: 3vw;
+        width: 3vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      &-title {
+        color: white;
+        font-weight: 800;
+        padding-left: 0.5rem;
+      }
+
+      &-description {
+        color: white;
+        padding-left: 0.5rem;
+        overflow: hidden;
+        font-size: 14px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+      }
+    }
+  }
+}
