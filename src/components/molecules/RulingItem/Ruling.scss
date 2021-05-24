@@ -56,14 +56,102 @@
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
       }
+    }
+  }
+}
 
-      &-date {
+.ruling-list-item {
+  width: 100%;
+  height: 14rem;
+  margin-bottom: 0.5rem;
+}
+.list-container {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  width: 100%;
+
+  &-opacity {
+    background: linear-gradient(
+      90deg,
+      rgba(110, 110, 110, 1) 0%,
+      rgba(110, 110, 110, 1.2) 40%,
+      rgba(110, 110, 110, 0.4) 100%
+    );
+    margin-bottom: 0;
+  }
+
+  .list-content {
+    width: 100%;
+    display: flex;
+    flex: 1;
+    height: 12rem;
+
+    flex-direction: column;
+    justify-content: space-between;
+
+    &__top {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+
+      &-background {
+        width: 12rem;
+        height: 10rem;
+        position: relative;
+
+        &-opacity {
+          width: 100%;
+        height: 10rem;
+        background: linear-gradient(
+          90deg,
+          rgba(110, 110, 110, 0) 40%,
+          rgba(110, 110, 110, 0.2) 60%,
+          rgba(110, 110, 110, 1) 100%,
+        );
+        }
+      }
+
+      &-thumb-icon {
+        position: absolute;
+        width: 3rem;
+        height: 3rem;
+        display: flex;
+        top: 0;
+        justify-content: center;
+        align-items: center;
+
+        &--svg-icon {
+          width: 100%;
+        }
+      }
+
+      &-info {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        justify-content: center;
+        height: 8rem;
+      }
+
+      &-title {
         color: white;
-        text-align: end;
+        font-weight: 800;
+        padding-left: 0.5rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+      }
+
+      &-description {
+        color: white;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
         overflow: hidden;
-        font-size: map-get($font-sizes, "supermin");
-        padding-right: 1rem;
-        font-weight: bold;
+        font-size: map-get($font-sizes, "min");
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
       }
     }
   }
@@ -90,10 +178,6 @@
 
         &-description {
           font-size: map-get($font-sizes, "normal");
-        }
-
-        &-date {
-          font-size: map-get($font-sizes, "min");
         }
       }
     }

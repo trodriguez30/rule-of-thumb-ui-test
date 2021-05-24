@@ -1,16 +1,17 @@
 import React from "react";
-import moment from "moment";
+
 import { RulingInterface } from "../../../definitions/type";
 import "./Ruling.scss";
 import ThumbUpIcon from "../../../assets/img/thumbs-up.svg";
 import ThumbDownIcon from "../../../assets/img/thumbs-down.svg";
 import { ReactSVG } from "react-svg";
-import PercentageBar from "../../atoms/PercentajeBar/PercentageBar";
+import GaugeBar from "../../atoms/GaugeBar/GaugeBar";
 import VoteFor from "../VoteFor/VoteFor";
 
 function RulingGridView(props: RulingInterface) {
   const votesUp = props.votes.positive;
   const votesDown = props.votes.negative;
+
 
   const getVotesType = () => {
     const type =
@@ -25,6 +26,7 @@ function RulingGridView(props: RulingInterface) {
           };
     return type;
   };
+
   return (
       <div
         style={{
@@ -48,12 +50,8 @@ function RulingGridView(props: RulingInterface) {
               <h3 className="grid-content__top-title">{props.name}</h3>
             </div>
             <p className="grid-content__top-description">{props.description}</p>
-            <p className="grid-content__top-date">{`${moment(
-              props.lastUpdated,
-              "YYYYMMDD"
-            ).fromNow()} in ${props.category}`}</p>
-            <VoteFor />
-            <PercentageBar votes={props.votes} />
+            <VoteFor updatedAt={props.lastUpdated} name={props.name} category={props.category}/>
+            <GaugeBar votes={props.votes} />
           </div>
         </div>
     </div>

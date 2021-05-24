@@ -1,5 +1,17 @@
+@import "../../../definitions/variables";
+
 .vote-for {
+  &__updated-date {
+    color: white;
+    text-align: end;
+    overflow: hidden;
+    font-size: map-get($font-sizes, "min");
+    padding-right: 1rem;
+    font-weight: bold;
+  }
+  &__buttons {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+  }
 }

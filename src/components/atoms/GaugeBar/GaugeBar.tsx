@@ -3,10 +3,12 @@ import { VoteInterface } from "../../../definitions/type";
 import ThumbUpIcon from "../../../assets/img/thumbs-up.svg";
 import ThumbDownIcon from "../../../assets/img/thumbs-down.svg";
 import { ReactSVG } from "react-svg";
-import "./PercentageBar.scss";
+import "./GaugeBar.scss";
 
-function PercentageBar(props: any) {
+function GaugeBar(props: any) {
   const votes: VoteInterface = props.votes;
+
+  //get negative and positive percentage according to total votes
   const getPercentage = () => {
     const total = votes.positive + votes.negative;
     const negative = Math.round((votes.negative * 100) / total);
@@ -52,4 +54,4 @@ function PercentageBar(props: any) {
   );
 }
 
-export default PercentageBar;
+export default GaugeBar;

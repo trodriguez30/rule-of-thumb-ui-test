@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { VIEW_TYPE } from "../../../definitions/constants";
 import { RulingInterface } from "../../../definitions/type";
 import RulingGridView from "../../molecules/RulingItem/RulingGridView";
@@ -8,15 +8,17 @@ import "./RulingsList.scss";
 
 interface RulingsListInterface {
   data: Array<RulingInterface>;
-  type: string | number ;
+  type: string | number;
 }
 function RulingsList(props: RulingsListInterface) {
   const mobileBreakpoint = 768;
 
   const rulingListRef = useRef(document.createElement("div"));
 
+  console.log(props.type);
   const [widthSize, setWidthSize] = useState<number>(0);
   const [scrolling, setScrolling] = useState<boolean>(false);
+  const [viewSelected, setViewSelected] = useState(props.type);
 
   //constant to save the pointer position on x-axis
   const [screenX, setScreenX] = useState<number>(0);
@@ -36,12 +38,25 @@ function RulingsList(props: RulingsListInterface) {
     return () => window.removeEventListener("resize", getScreenWidth);
   }, []);
 
+  useEffect(() => {
+    if (widthSize < mobileBreakpoint) {
+      console.log(widthSize);
+      const gridValue = VIEW_TYPE[1].value;
+      console.log(gridValue);
+      setViewSelected(gridValue);
+    }
+    if (props.type) {
+      setViewSelected(props.type);
+    }
+  }, [widthSize, props.type]);
+
   //define type of view according to prop type, list or grid
-  const ListItems = (item: any) => {
-    return props.type === VIEW_TYPE[0].value ? (
-      <RulingListView {...item} />
+  const ListItems = (props: any) => {
+    console.log(props.view)
+    return props.view === VIEW_TYPE[0].value ? (
+      <RulingListView {...props} />
     ) : (
-      <RulingGridView {...item} />
+      <RulingGridView {...props} />
     );
   };
 
@@ -50,7 +65,7 @@ function RulingsList(props: RulingsListInterface) {
     const currentList = rulingListRef.current;
 
     //only is available if there is a mobile screen
-    if (isMobileSize()) {
+    if (widthSize < mobileBreakpoint) {
       switch (kind) {
         //case to start the scrolling
         case "down": {
@@ -81,11 +96,6 @@ function RulingsList(props: RulingsListInterface) {
     }
   }
 
-  //function to return boolean true if the screen width is from a mobile
-  function isMobileSize() {
-    return widthSize < mobileBreakpoint;
-  }
-
   return (
     <div
       ref={rulingListRef}
@@ -95,7 +105,7 @@ function RulingsList(props: RulingsListInterface) {
       className="ruling-list"
     >
       {props.data.map((item: RulingInterface) => (
-        <ListItems {...item} />
+        <ListItems {...item} view={viewSelected}/>
       ))}
     </div>
   );
