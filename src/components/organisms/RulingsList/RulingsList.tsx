@@ -39,17 +39,16 @@ function RulingsList(props: RulingsListInterface) {
   }, []);
 
   useEffect(() => {
-    if (widthSize < mobileBreakpoint) {
-      const gridValue = VIEW_TYPE[1].value;
-      setViewSelected(gridValue);
-    }
     if (props.type) {
       setViewSelected(props.type);
     }
-  }, [widthSize, props.type, viewSelected]);
+  }, [props.type, viewSelected]);
 
   //define type of view according to prop type, list or grid
   const ListItems = (item: RulingInterface) => {
+    if (widthSize < mobileBreakpoint) {
+      return <RulingGridView {...item} />;
+    }
     return viewSelected === VIEW_TYPE[0].value ? (
       <RulingListView {...item} />
     ) : (

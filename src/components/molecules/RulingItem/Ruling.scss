@@ -184,6 +184,35 @@
   }
 }
 
+
+@media all and (min-width: 425px) {
+  .ruling-grid {
+    width: 88%;
+    height: 88vw;
+    margin-right: 1rem;
+  }
+  .grid-container {
+    .grid-content {
+      &__top {
+        &-thumb-icon {
+          &--svg-icon {
+            width: 70%;
+          }
+        }
+
+        &-title {
+          font-size: map-get($font-sizes, "title");
+        }
+
+        &-description {
+          font-size: map-get($font-sizes, "subtitle");
+        }
+      }
+    }
+  }
+}
+
+
 @media all and (min-width: 768px) {
   .ruling-grid {
     width: 48%;
