@@ -1,16 +1,42 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { VIEW_TYPE } from "../../../definitions/constants";
 import { RulingInterface } from "../../../definitions/type";
 import RulingGridView from "../../molecules/RulingItem/RulingGridView";
 import RulingListView from "../../molecules/RulingItem/RulingListView";
 
-import './RulingsList.scss';
+import "./RulingsList.scss";
 
 interface RulingsListInterface {
   data: Array<RulingInterface>;
   type: string;
 }
 function RulingsList(props: RulingsListInterface) {
+  const mobileBreakpoint = 768;
+
+  const rulingListRef = useRef(document.createElement("div"));
+
+  const [widthSize, setWidthSize] = useState<number>(0);
+  const [scrolling, setScrolling] = useState<boolean>(false);
+
+  //constant to save the pointer position on x-axis
+  const [screenX, setScreenX] = useState<number>(0);
+
+  //constant to save the scroll position on x-axis
+  const [scrollX, setScrollX] = useState<number>(0);
+
+  useEffect(() => {
+    //function to get screen width to handle scrolling at mobile
+    function getScreenWidth() {
+      setWidthSize(window.innerWidth);
+    }
+    // Add event listener to execute function to get width of screen
+    window.addEventListener("resize", getScreenWidth);
+    getScreenWidth();
+    // Remove event listener when component will unmount
+    return () => window.removeEventListener("resize", getScreenWidth);
+  }, []);
+
+  //define type of view according to prop type, list or grid
   const ListItems = (item: any) => {
     return props.type === VIEW_TYPE[0].value ? (
       <RulingListView {...item} />
@@ -18,8 +44,56 @@ function RulingsList(props: RulingsListInterface) {
       <RulingGridView {...item} />
     );
   };
+
+  //function to handle scrolling at mobile size according to user scrolling action
+  function handleMouse(e: any, kind: string) {
+    const currentList = rulingListRef.current;
+
+    //only is available if there is a mobile screen
+    if (isMobileSize()) {
+      switch (kind) {
+        //case to start the scrolling
+        case "down": {
+          setScrolling(true);
+          //save the inital pointer position when start the drag
+          setScreenX(e.screenX);
+          //save the inital scroll position when start the drag
+          setScrollX(currentList.scrollLeft);
+          break;
+        }
+        //case to end the scrolling and clean the values
+        case "up": {
+          setScrolling(false);
+          //clean the pointer position when end the drag
+          setScreenX(0);
+          //clean the scroll position when end the drag
+          setScrollX(0);
+          break;
+        }
+        //case to scroll the list with drag method
+        case "move": {
+          if (scrolling) {
+            currentList.scrollLeft = scrollX + screenX - e.screenX;
+          }
+          break;
+        }
+      }
+    }
+  }
+
+  //function to return boolean true if the screen width is from a mobile
+  function isMobileSize() {
+    return widthSize < mobileBreakpoint;
+  }
+
   return (
-    <div className="ruling-list">
+    <div
+      ref={rulingListRef}
+      onMouseDown={(e) => handleMouse(e, "down")}
+      onMouseUp={(e) => handleMouse(e, "up")}
+      onMouseMove={(e) => handleMouse(e, "move")}
+      className="ruling-list"
+    >
       {props.data.map((item: RulingInterface) => (
         <ListItems {...item} />
       ))}

@@ -72,14 +72,28 @@
 @media all and (min-width: 320px) {
   .ruling-grid {
     width: 88%;
-    height: 80vw;
+    height: 88vw;
+    margin-right: 1rem;
   }
+  .grid-container {
+    .grid-content {
+      &__top {
+        &-thumb-icon {
+          &--svg-icon {
+            width: 70%;
+          }
+        }
 
-  .grid-content {
-    &__top {
-      &-thumb-icon {
-        &--svg-icon {
-          width: 70%;
+        &-title {
+          font-size: map-get($font-sizes, "subtitle");
+        }
+
+        &-description {
+          font-size: map-get($font-sizes, "normal");
+        }
+
+        &-date {
+          font-size: map-get($font-sizes, "min");
         }
       }
     }
@@ -90,13 +104,15 @@
   .ruling-grid {
     width: 48%;
     height: 50vw;
+    margin-right: 0rem;
   }
-
-  .grid-content {
-    &__top {
-      &-thumb-icon {
-        &--svg-icon {
-          width: 90%;
+  .grid-container {
+    .grid-content {
+      &__top {
+        &-thumb-icon {
+          &--svg-icon {
+            width: 90%;
+          }
         }
       }
     }
@@ -108,12 +124,13 @@
     width: 32%;
     height: 30vw;
   }
-
-  .grid-content {
-    &__top {
-      &-thumb-icon {
-        &--svg-icon {
-          width: 100%;
+  .grid-container {
+    .grid-content {
+      &__top {
+        &-thumb-icon {
+          &--svg-icon {
+            width: 100%;
+          }
         }
       }
     }

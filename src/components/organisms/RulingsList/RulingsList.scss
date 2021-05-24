@@ -1,7 +1,28 @@
 .ruling-list {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+@media all and (min-width: 320px) {
+  .ruling-list {
+    height: 88vw;
+    flex-direction: column;
     display: flex;
+    overflow-x: auto;
+
+    -webkit-user-select: none;  
+    -moz-user-select: none;    
+    -ms-user-select: none;      
+    user-select: none;
+  }
+}
+
+@media all and (min-width: 768px) {
+  .ruling-list {
     flex-direction: row;
-    width: 100%;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    height: auto;
+  }
 }
