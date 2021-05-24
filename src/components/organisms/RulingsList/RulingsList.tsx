@@ -8,7 +8,7 @@ import "./RulingsList.scss";
 
 interface RulingsListInterface {
   data: Array<RulingInterface>;
-  type: string;
+  type: string | number ;
 }
 function RulingsList(props: RulingsListInterface) {
   const mobileBreakpoint = 768;

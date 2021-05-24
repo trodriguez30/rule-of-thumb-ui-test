@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Select from "react-select";
 import { RootStateOrAny, useDispatch, useSelector } from "react-redux";
 import { getRulings } from "../../../redux/rulings/actions";
 import { VIEW_TYPE } from "../../../definitions/constants";
@@ -11,10 +12,11 @@ import emptyIcon from "../../../assets/img/empty.svg";
 import loaderIcon from "../../../assets/img/thumb_loader.svg";
 
 import "./PreviousRulings.scss";
+import { OptionsInterface } from "../../../definitions/type";
 
 function PreviousRulings() {
   const dispatch = useDispatch();
-  const [view, setView] = useState("List");
+  const [view, setView] = useState(VIEW_TYPE[0].value);
 
   const {
     fetchingRulings,
@@ -34,13 +36,19 @@ function PreviousRulings() {
   }, []);
 
   //handle component when is fetching data from API
-  if(fetchingRulings){
-    return <InfoState message="Cargando información..." icon={loaderIcon} type="loading" />
+  if (fetchingRulings) {
+    return (
+      <InfoState
+        message="Cargando información..."
+        icon={loaderIcon}
+        type="loading"
+      />
+    );
   }
 
   //Handle error response from API
   if (rulingsFetchFailed) {
-    return <InfoState message={error} icon={errorIcon}  type="info" />
+    return <InfoState message={error} icon={errorIcon} type="info" />;
   }
 
   //Handle empty data response from API
@@ -59,15 +67,12 @@ function PreviousRulings() {
     <main role="main">
       <div className="main-top">
         <h2 className="main-top__title">Previous Rulings</h2>
-        <select
-          className="main-top__options"
-          value={view}
-          onChange={(e) => setView(e.target.value)}
-        >
-          {VIEW_TYPE.map((v: any) => {
-            return <option value={v.value}>{v.label}</option>;
-          })}
-        </select>
+        <Select
+        className="main-top__select"
+          options={VIEW_TYPE}
+          onChange={value => setView(value ? value.value : '')}
+          defaultValue={VIEW_TYPE[0]}
+        />
       </div>
       {rulings.length !== 0 && <RulingsList data={rulings} type={view} />}
     </main>
