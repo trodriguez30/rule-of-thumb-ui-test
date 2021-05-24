@@ -15,7 +15,7 @@
             "name": "Mark Zuckerberg",
             "description": "Born in White Plains, New York, Zuckerberg attended Harvard University, where he launched the Facebook social networking service from his dormitory room on February 4, 2004.",
             "category": "business",
-            "picture": "mark.png",
+            "picture": "https://www.semana.com/resizer/e5VkGz3fME5g5jLrd_RILIm3J40=/1200x675/filters:format(jpg):quality(70)//cloudfront-us-east-1.images.arcpublishing.com/semana/H3B6TUG3GVHMVFIDQSJXXMFUF4.jpg",
             "lastUpdated": "2021-02-14T23:10:19.134Z",
             "votes": {
                 "positive": 418,
@@ -26,7 +26,7 @@
             "name": "Cristina Fernández de Kirchner",
             "description": "Her first term of office started with a conflict with the agricultural sector, and her proposed taxation system was rejected.",
             "category": "politics",
-            "picture": "cristina.png",
+            "picture": "https://www.semana.com/resizer/e5VkGz3fME5g5jLrd_RILIm3J40=/1200x675/filters:format(jpg):quality(70)//cloudfront-us-east-1.images.arcpublishing.com/semana/H3B6TUG3GVHMVFIDQSJXXMFUF4.jpg",
             "lastUpdated": "2020-12-10T23:41:07.120Z",
             "votes": {
                 "positive": 45,
@@ -37,7 +37,7 @@
             "name": "Malala Yousafzai",
             "description": "The daughter of educational activist Ziauddin, Yousafzai was born to a Pashtun family in Mingora, Khyber Pakhtunkhwa, Pakistan. Her family came to run a chain of schools in the region.",
             "category": "politics",
-            "picture": "malala.png",
+            "picture": "https://www.semana.com/resizer/e5VkGz3fME5g5jLrd_RILIm3J40=/1200x675/filters:format(jpg):quality(70)//cloudfront-us-east-1.images.arcpublishing.com/semana/H3B6TUG3GVHMVFIDQSJXXMFUF4.jpg",
             "lastUpdated": "2020-12-10T23:41:07.120Z",
             "votes": {
                 "positive": 18,
@@ -48,7 +48,7 @@
             "name": "Elon Musk",
             "description": "In 2002, Musk founded SpaceX, an aerospace manufacturer and space transport services company, of which he is CEO, CTO, and lead designer.",
             "category": "business",
-            "picture": "elon.png",
+            "picture": "https://disruptivo.tv/wp-content/uploads/2019/06/ElonMusk.png",
             "lastUpdated": "2020-12-20T23:43:38.041Z",
             "votes": {
                 "positive": 1237,
@@ -59,7 +59,7 @@
             "name": "Greta Thumberg",
             "description": "Thunberg's activism started after convincing her parents to adopt several lifestyle choices to reduce their own carbon footprint.",
             "category": "environment",
-            "picture": "greta.png",
+            "picture": "https://cdn.elnacional.com/wp-content/uploads/2020/08/Greta-Thunberg.jpeg",
             "lastUpdated": "2021-02-26T23:44:50.326Z",
             "votes": {
                 "positive": 118,

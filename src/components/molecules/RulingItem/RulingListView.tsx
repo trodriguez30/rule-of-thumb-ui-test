@@ -1,7 +1,7 @@
 import React from "react";
 
-function RulingGridView() {
+function RulingListView() {
   return <div></div>;
 }
 
-export default RulingGridView;
+export default RulingListView;
