@@ -222,6 +222,15 @@
   .grid-container {
     .grid-content {
       &__top {
+
+        &-title {
+          font-size: map-get($font-sizes, "normal");
+        }
+
+        &-description {
+          font-size: map-get($font-sizes, "min");
+        }
+
         &-thumb-icon {
           &--svg-icon {
             width: 90%;
