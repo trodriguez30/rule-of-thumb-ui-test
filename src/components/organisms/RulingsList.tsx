@@ -1,5 +1,5 @@
 import React from "react";
-import { RulingInterface } from "../../definitions/interfaces";
+import { RulingInterface } from "../../definitions/type";
 
 interface RulingsListInterface {
     data: Array<RulingInterface>,

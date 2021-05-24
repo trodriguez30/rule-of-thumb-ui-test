@@ -1,0 +1,39 @@
+@import "../../../definitions/variables";
+
+.info-state {
+  min-height: 30rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 0 3rem;
+
+  &__svg-icon {
+    width: 5rem;
+    height: 5rem;
+  }
+
+  &__message {
+    font-size: map-get($font-sizes, "big");
+    color: $dark-gray;
+    text-align: center;
+  }
+}
+
+.info-loader {
+  .info-state__svg-icon {
+    animation: zoominoutsinglefeatured 1s infinite;
+  }
+}
+
+@keyframes zoominoutsinglefeatured {
+  0% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(1.2, 1.2);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}

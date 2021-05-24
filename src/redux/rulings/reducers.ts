@@ -1,3 +1,4 @@
+import { RulingStateInterface,  RulingActionInterface} from "../../definitions/type";
 import {
   GET_RULINGS_REQUEST,
   GET_RULINGS_SUCCESS,
@@ -6,17 +7,19 @@ import {
   VOTE_AGAIN,
 } from "./actions";
 
-const initialState = {
+const initialState: RulingStateInterface = {
   fetchingRulings: false,
   rulings: [],
   error: null,
   rulingsFetched: false,
   rulingsFetchFailed: false,
-
   rulingVoted: {},
 };
 
-export default function reducer(state = initialState, action) {
+export default function reducer(
+  state: RulingStateInterface = initialState,
+  action: RulingActionInterface
+) {
   switch (action.type) {
     case GET_RULINGS_REQUEST:
       return {
@@ -42,7 +45,7 @@ export default function reducer(state = initialState, action) {
         fetchingRulings: false,
         rulings: [],
         error: action.payload.error,
-        rulingsFetched: false,
+        rulingsFetched: true,
         rulingsFetchFailed: true,
       };
     case VOTE_FOR_A_RULING:

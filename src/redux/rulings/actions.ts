@@ -1,4 +1,7 @@
-import axios from 'axios';
+import { AxiosResponse } from "axios";
+import {Dispatch} from 'redux';
+import { RulingInterface } from "../../definitions/type";
+import { sendGetRulingsRequest } from "./services";
 
 // Define action types
 export const GET_RULINGS_REQUEST = 'GET_RULINGS_REQUEST';
@@ -8,34 +11,24 @@ export const GET_RULINGS_ERROR = 'GET_RULINGS_ERROR';
 export const VOTE_FOR_A_RULING = 'VOTE_FOR_A_RULING';
 export const VOTE_AGAIN = 'VOTE_AGAIN';
 
-const HOST_URL = process.env.REACT_APP_BASE_API_URL;
-
 //Define actions
 export const getRulings = () => {
-  console.log(HOST_URL);
-  return async (dispatch) => {
+  return async (dispatch: Dispatch) => {
     dispatch(getRulingsRequest());
     try {
-      const opts = {
-        method: 'get',
-        url: `${HOST_URL}/rulings`,
-      };
-      const response = await axios(opts);
-
-      if (response.data) {
-        dispatch(getRulingsSuccess(response.data));
+      const res: AxiosResponse<RulingInterface[]> = await sendGetRulingsRequest();
+      if (res.data) {
+        dispatch(getRulingsSuccess(res.data));
       } else {
-        throw new Error(
-          'Tenemos inconvenientes cargando los datos, intenta más tarde',
-        );
+        throw new Error();
       }
     } catch (error) {
-      dispatch(getRulingsError(error.message));
+      dispatch(getRulingsError('Tenemos inconvenientes cargando los datos, intenta más tarde.'));
     }
   };
 };
 
-const getRulingsSuccess = (payload) => ({
+const getRulingsSuccess = (payload: any) => ({
   type: GET_RULINGS_SUCCESS,
   payload,
 });
@@ -44,14 +37,14 @@ const getRulingsRequest = () => ({
   type: GET_RULINGS_REQUEST,
 });
 
-const getRulingsError = (error) => ({
+const getRulingsError = (error: string) => ({
   type: GET_RULINGS_ERROR,
   payload: {
     error,
   },
 });
 
-export const voteRuling = (payload) => ({
+export const voteRuling = (payload: any) => ({
   type: VOTE_FOR_A_RULING,
   payload,
 });

@@ -1,5 +1,5 @@
 import React from "react";
-import { RulingInterface } from "../../../definitions/interfaces";
+import { RulingInterface } from "../../../definitions/type";
 import "./Ruling.scss";
 import ThumbUpIcon from "../../assets/img/thumbs-up.svg";
 import ThumbDownIcon from "../../assets/img/thumbs-down.svg";
