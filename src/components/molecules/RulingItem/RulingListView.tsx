@@ -2,30 +2,13 @@ import React from "react";
 
 import { RulingInterface } from "../../../definitions/type";
 import "./Ruling.scss";
-import ThumbUpIcon from "../../../assets/img/thumbs-up.svg";
-import ThumbDownIcon from "../../../assets/img/thumbs-down.svg";
+
 import { ReactSVG } from "react-svg";
 import GaugeBar from "../../atoms/GaugeBar/GaugeBar";
 import VoteFor from "../VoteFor/VoteFor";
+import { getVotesType } from "../../../settings/utils";
 
 function RulingListView(props: RulingInterface) {
-  const votesUp = props.votes.positive;
-  const votesDown = props.votes.negative;
-
-  const getVotesType = () => {
-    const type =
-      votesUp > votesDown
-        ? {
-            color: "#5EC3BD",
-            icon: ThumbUpIcon,
-          }
-        : {
-            color: "#DC9F2D",
-            icon: ThumbDownIcon,
-          };
-    return type;
-  };
-
   return (
     <div className="ruling-list-item">
       <div className="list-container list-container-opacity">
@@ -40,11 +23,11 @@ function RulingListView(props: RulingInterface) {
             >
               <div className="list-content__top-background-opacity"></div>
               <div
-                style={{ backgroundColor: getVotesType().color }}
+                style={{ backgroundColor: getVotesType(props.votes).color }}
                 className="list-content__top-thumb-icon"
               >
                 <ReactSVG
-                  src={getVotesType().icon}
+                  src={getVotesType(props.votes).icon}
                   beforeInjection={(svg) => {
                     svg.classList.add("list-content__top-thumb-icon--svg-icon");
                   }}

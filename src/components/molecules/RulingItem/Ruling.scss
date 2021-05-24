@@ -148,7 +148,7 @@
         padding-left: 0.5rem;
         padding-right: 0.5rem;
         overflow: hidden;
-        font-size: map-get($font-sizes, "min");
+        font-size: map-get($font-sizes, "normal");
         display: -webkit-box;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
