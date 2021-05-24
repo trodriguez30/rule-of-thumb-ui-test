@@ -26,33 +26,36 @@ function RulingGridView(props: RulingInterface) {
     return type;
   };
   return (
-    <div
-      style={{
-        backgroundSize: "cover",
-        backgroundImage: `url(${props.picture})`,
-      }}
-      className="grid-container"
-    >
-      <div className="grid-container grid-container-opacity">
-        <div className="grid-content">
-          <div className="grid-content__top">
-            <div
-              style={{ backgroundColor: getVotesType().color }}
-              className="grid-content__top-thumb-icon"
-            >
-              <ReactSVG src={getVotesType().icon} className="svg-icon" />
+      <div
+        style={{
+          backgroundSize: "cover",
+          backgroundImage: `url(${props.picture})`,
+        }}
+        className="ruling-grid"
+      >
+        <div className="grid-container grid-container-opacity">
+          <div className="grid-content">
+            <div className="grid-content__top">
+              <div
+                style={{ backgroundColor: getVotesType().color }}
+                className="grid-content__top-thumb-icon"
+              >
+                <ReactSVG src={getVotesType().icon} 
+                beforeInjection={(svg) => {
+                  svg.classList.add("grid-content__top-thumb-icon--svg-icon");
+                }} />
+              </div>
+              <h3 className="grid-content__top-title">{props.name}</h3>
             </div>
-            <h3 className="grid-content__top-title">{props.name}</h3>
+            <p className="grid-content__top-description">{props.description}</p>
+            <p className="grid-content__top-date">{`${moment(
+              props.lastUpdated,
+              "YYYYMMDD"
+            ).fromNow()} in ${props.category}`}</p>
+            <VoteFor />
+            <PercentageBar votes={props.votes} />
           </div>
-          <p className="grid-content__top-description">{props.description}</p>
-          <p className="grid-content__top-date">{`${moment(
-            props.lastUpdated,
-            "YYYYMMDD"
-          ).fromNow()} in ${props.category}`}</p>
-          <VoteFor />
-          <PercentageBar votes={props.votes} />
         </div>
-      </div>
     </div>
   );
 }
