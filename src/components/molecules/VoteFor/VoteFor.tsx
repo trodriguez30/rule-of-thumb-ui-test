@@ -35,7 +35,7 @@ function VoteFor(props: any) {
 
   return (
     <div className="vote-for">
-      <p className="vote-for__updated-date">
+      <p className="vote-for__message">
         {isVoted
           ? "Thank you for your vote!"
           : `${moment(ruling.lastUpdated, "YYYYMMDD").fromNow()} in ${
