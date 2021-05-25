@@ -30,8 +30,7 @@ function VoteFor(props: any) {
       ReactGA.event({
         category: 'Vote',
         action: 'Vote for a Ruling',
-        label: payload.name,
-        value: voteType === "positive" ? 1 : 0,
+        label: `vote ${voteType} for ${ruling.name}`,
       });
       setVoteType("");
     }
