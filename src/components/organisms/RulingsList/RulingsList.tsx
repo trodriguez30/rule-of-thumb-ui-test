@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { VIEW_TYPE } from "../../../definitions/constants";
 import { RulingInterface } from "../../../definitions/type";
 import RulingGridView from "../../molecules/RulingItem/RulingGridView";

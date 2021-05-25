@@ -2,7 +2,6 @@ import React from "react";
 import { ReactSVG } from "react-svg";
 
 import "./VoteButtons.scss";
-import { VOTE_STYLES } from "../../../definitions/constants";
 import { voteStyle } from "../../../settings/utils";
 
 interface VoteButtonInterface {

@@ -2,8 +2,6 @@
 import React from "react";
 import "./Home.scss";
 
-//import SEO component
-import SEO from "../components/templates/SEO";
 //container import start
 import NavBar from "../components/templates/NavBar/NavBar";
 import Header from "../components/templates/Header/Header";
@@ -16,7 +14,6 @@ import PreviousRulings from "../components/templates/PreviousRulings/PreviousRul
 function Home() {
   return (
     <div className="App">
-      <SEO />
       <NavBar />
       <Header />
       <div className="max-centered">
