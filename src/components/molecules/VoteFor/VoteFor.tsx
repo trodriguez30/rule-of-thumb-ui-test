@@ -5,6 +5,9 @@ import ButtonText from "../../atoms/VoteButtons/ButtonText";
 import moment from "moment";
 import { useDispatch, useSelector, RootStateOrAny } from "react-redux";
 import { voteRuling, voteAgain } from "../../../redux/rulings/actions";
+
+import ReactGA from 'react-ga';
+
 function VoteFor(props: any) {
   const { ruling } = props;
   const [voteType, setVoteType] = useState("");
@@ -24,6 +27,12 @@ function VoteFor(props: any) {
       const payload = { ...ruling };
       payload.votes[voteType] += 1;
       dispatch(voteRuling(payload));
+      ReactGA.event({
+        category: 'Vote',
+        action: 'Vote for a Ruling',
+        label: payload.name,
+        value: voteType === "positive" ? 1 : 0,
+      });
       setVoteType("");
     }
   }
