@@ -3,6 +3,7 @@ import { ReactSVG } from "react-svg";
 
 import "./VoteButtons.scss";
 import { VOTE_STYLES } from "../../../definitions/constants";
+import { voteStyle } from "../../../settings/utils";
 
 interface VoteButtonInterface {
   type: string;
@@ -14,18 +15,14 @@ function Vote(props: VoteButtonInterface) {
     props.onPress();
   }
 
-  const voteStyle = (type: string) => {
-    return VOTE_STYLES[type];
-  };
-
   return (
     <button
       className="vote-button"
       aria-label={`thumbs ${props.type}`}
       style={{
         backgroundColor: voteStyle(props.type).color,
-        borderWidth: '0.15rem',
-        borderStyle: 'solid',
+        borderWidth: "0.15rem",
+        borderStyle: "solid",
         borderColor: props.isVoted ? "white" : voteStyle(props.type).color,
       }}
       onClick={handleClick}

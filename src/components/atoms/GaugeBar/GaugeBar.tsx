@@ -4,25 +4,17 @@ import ThumbUpIcon from "../../../assets/img/thumbs-up.svg";
 import ThumbDownIcon from "../../../assets/img/thumbs-down.svg";
 import { ReactSVG } from "react-svg";
 import "./GaugeBar.scss";
+import { getPercentage } from "../../../settings/utils";
 
 function GaugeBar(props: any) {
   const votes: VoteInterface = props.votes;
 
-  //get negative and positive percentage according to total votes
-  const getPercentage = () => {
-    const total = votes.positive + votes.negative;
-    const negative = Math.round((votes.negative * 100) / total);
-    const positive = Math.round((votes.positive * 100) / total);
-    return {
-      positive,
-      negative,
-    };
-  };
+  const percentage =  getPercentage(votes);
   return (
     <div className="percentaje-bar">
       <div
         className="percentaje-bar__positive percentaje-bar__mix"
-        style={{ width: `${getPercentage().positive}%` }}
+        style={{ width: `${percentage.positive}%` }}
       >
         <ReactSVG
           src={ThumbUpIcon}
@@ -32,16 +24,16 @@ function GaugeBar(props: any) {
           }}
         />
         <p className="percentaje-bar__number">{`${
-          getPercentage().positive
-        } %`}</p>
+          percentage.positive
+        }%`}</p>
       </div>
       <div
         className="percentaje-bar__negative percentaje-bar__mix"
-        style={{ width: `${getPercentage().negative}%` }}
+        style={{ width: `${percentage.negative}%` }}
       >
         <p className="percentaje-bar__number">{`${
-          getPercentage().negative
-        } %`}</p>
+          percentage.negative
+        }%`}</p>
         <ReactSVG
           src={ThumbDownIcon}
           beforeInjection={(svg) => {
