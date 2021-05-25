@@ -1,6 +1,6 @@
+import { VOTE_STYLES } from "../definitions/constants";
 import { VoteInterface } from "../definitions/type";
-import ThumbUpIcon from "../assets/img/thumbs-up.svg";
-import ThumbDownIcon from "../assets/img/thumbs-down.svg";
+
 
 export const getVotesType = (votes: VoteInterface) => {
   const votesUp = votes.positive;
@@ -8,13 +8,7 @@ export const getVotesType = (votes: VoteInterface) => {
 
   const type =
     votesUp > votesDown
-      ? {
-          color: "#5EC3BD",
-          icon: ThumbUpIcon,
-        }
-      : {
-          color: "#DC9F2D",
-          icon: ThumbDownIcon,
-        };
+      ? VOTE_STYLES.positive
+      : VOTE_STYLES.negative;
   return type;
 };

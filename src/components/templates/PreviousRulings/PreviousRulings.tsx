@@ -12,7 +12,6 @@ import emptyIcon from "../../../assets/img/empty.svg";
 import loaderIcon from "../../../assets/img/thumb_loader.svg";
 
 import "./PreviousRulings.scss";
-import { OptionsInterface } from "../../../definitions/type";
 
 function PreviousRulings() {
   const dispatch = useDispatch();
@@ -31,7 +30,6 @@ function PreviousRulings() {
     if (rulings.length === 0) {
       dispatch(getRulings());
     }
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

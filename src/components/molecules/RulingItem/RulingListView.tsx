@@ -41,11 +41,7 @@ function RulingListView(props: RulingInterface) {
               </p>
             </div>
 
-            <VoteFor
-              updatedAt={props.lastUpdated}
-              name={props.name}
-              category={props.category}
-            />
+            <VoteFor ruling={props}/>
           </div>
 
           <GaugeBar votes={props.votes} />

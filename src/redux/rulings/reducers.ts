@@ -1,4 +1,8 @@
-import { RulingStateInterface,  RulingActionInterface} from "../../definitions/type";
+import {
+  RulingStateInterface,
+  RulingActionInterface,
+  RulingInterface,
+} from "../../definitions/type";
 import {
   GET_RULINGS_REQUEST,
   GET_RULINGS_SUCCESS,
@@ -13,7 +17,7 @@ const initialState: RulingStateInterface = {
   error: null,
   rulingsFetched: false,
   rulingsFetchFailed: false,
-  rulingVoted: {},
+  rulingsVoted: [],
 };
 
 export default function reducer(
@@ -48,10 +52,24 @@ export default function reducer(
         rulingsFetched: true,
         rulingsFetchFailed: true,
       };
-    case VOTE_FOR_A_RULING:
-      return { ...state, rulingVoted: action.payload };
-    case VOTE_AGAIN:
-      return { ...state, rulingVoted: {} };
+    case VOTE_FOR_A_RULING: {
+      const indexOfRuling = state.rulings.findIndex(
+        (r: RulingInterface) => r.name === action.payload.name
+      );
+      const newRulings = [...state.rulings];
+      newRulings[indexOfRuling] = action.payload;
+      return {
+        ...state,
+        rulingsVoted: [...state.rulingsVoted, action.payload.name],
+        rulings: newRulings,
+      };
+    }
+    case VOTE_AGAIN: {
+      const rulingVotesFilter = state.rulingsVoted.filter(
+        (r: string) => r !== action.payload
+      );
+      return { ...state, rulingsVoted: rulingVotesFilter };
+    }
     default:
       return state;
   }

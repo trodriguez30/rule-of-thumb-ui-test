@@ -15,7 +15,6 @@ function RulingsList(props: RulingsListInterface) {
 
   const rulingListRef = useRef(document.createElement("div"));
 
-  console.log(props.type);
   const [widthSize, setWidthSize] = useState<number>(0);
   const [scrolling, setScrolling] = useState<boolean>(false);
   const [viewSelected, setViewSelected] = useState(props.type);
@@ -100,8 +99,8 @@ function RulingsList(props: RulingsListInterface) {
       onMouseMove={(e) => handleMouse(e, "move")}
       className="ruling-list"
     >
-      {props.data.map((item: RulingInterface) => (
-        <ListItems {...item} />
+      {props.data.map((item: RulingInterface, index: number) => (
+        <ListItems {...item} key={index}/>
       ))}
     </div>
   );

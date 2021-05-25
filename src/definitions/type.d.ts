@@ -1,3 +1,5 @@
+import React from "react";
+
 //interface for vote attribute at ruling item
 export interface VoteInterface {
   positive: number;
@@ -16,18 +18,21 @@ export interface RulingInterface {
 
 //interface for array of options
 export interface OptionsInterface {
-  value: string | number,
-  label: string,
+  value: string | number;
+  label: string;
+}
+interface ObjectInterface {
+  [key: string]: any;
 }
 
-//interface for ruling state of redux 
+//interface for ruling state of redux
 export interface RulingStateInterface {
   fetchingRulings: boolean;
   rulings: Array<RulingInterface>;
   error: string | null;
   rulingsFetched: boolean;
   rulingsFetchFailed: boolean;
-  rulingVoted: RulingInterface | {};
+  rulingsVoted: Array<string> | [];
 }
 
 //interface for ruling actions of redux

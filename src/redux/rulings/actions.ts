@@ -44,11 +44,12 @@ const getRulingsError = (error: string) => ({
   },
 });
 
-export const voteRuling = (payload: any) => ({
+export const voteRuling = (payload: RulingInterface) => ({
   type: VOTE_FOR_A_RULING,
   payload,
 });
 
-export const voteAgaing = () => ({
+export const voteAgain = (payload: string) => ({
   type: VOTE_AGAIN,
+  payload
 });

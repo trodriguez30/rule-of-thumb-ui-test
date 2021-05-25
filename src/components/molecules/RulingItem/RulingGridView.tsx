@@ -31,7 +31,7 @@ function RulingGridView(props: RulingInterface) {
               <h3 className="grid-content__top-title">{props.name}</h3>
             </div>
             <p className="grid-content__top-description">{props.description}</p>
-            <VoteFor updatedAt={props.lastUpdated} name={props.name} category={props.category}/>
+            <VoteFor ruling={props}/>
             <GaugeBar votes={props.votes} />
           </div>
         </div>

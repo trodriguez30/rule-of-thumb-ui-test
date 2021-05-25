@@ -2,12 +2,12 @@ import RulingsReducer from './rulings/reducers';
 
 import {combineReducers} from 'redux';
 import {persistReducer} from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
+import localStorage from 'redux-persist/lib/storage'
 
 const rulingsPersistConfig = {
   key: 'rulings',
-  storage,
-  whitelist: ['rulings', 'rulingVoted'],
+  storage: localStorage,
+  whitelist: ['rulings', 'rulingsVoted'],
 };
 
 const createRootReducer = combineReducers({
